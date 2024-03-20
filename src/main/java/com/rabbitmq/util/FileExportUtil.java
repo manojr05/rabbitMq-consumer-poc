@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Base64;
 
 @Service
 @Slf4j
@@ -22,7 +21,7 @@ public class FileExportUtil {
 
             File exportDirectory = new File(exportDirectoryPath);
             if (!exportDirectory.exists()) {
-                exportDirectory.mkdirs(); // Creates the directory including any necessary but nonexistent parent directories
+                exportDirectory.mkdirs();
             }
 
             FileOutputStream outputStream = new FileOutputStream(exportDirectoryPath + fileName);
