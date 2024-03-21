@@ -15,7 +15,7 @@ public class FileExportUtil {
 
     public void exportFile(byte[] fileContent){
         try {
-            String fileNameWithExtension = "export.csv";
+            String fileNameWithExtension = "export.pdf";
             String fileName = Paths.get(fileNameWithExtension).getFileName().toString();
 
             String exportDirectoryPath = "src/main/resources/export/";

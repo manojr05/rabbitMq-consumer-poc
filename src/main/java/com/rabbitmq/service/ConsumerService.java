@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
-
 import java.util.Base64;
 
 @Service
@@ -28,9 +27,9 @@ public class ConsumerService {
 
     @RabbitListener(queues = "${rabbitmq.file.queue}")
     public void fileConsumer(String encryptedFile){
-        byte[] fileContent = Base64.getDecoder().decode(encryptedFile);
+        String substring = encryptedFile.substring(1, encryptedFile.length() - 2);
+        byte[] fileContent = Base64.getDecoder().decode(substring);
         fileExportService.exportFile(fileContent);
         log.info("Received message: {}", encryptedFile);
     }
-
 }
