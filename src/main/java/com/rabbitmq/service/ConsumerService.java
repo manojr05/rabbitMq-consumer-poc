@@ -14,9 +14,9 @@ public class ConsumerService {
     private final RabbitTemplate rabbitTemplate;
 
     @RabbitListener(queues = "MAC001.messageQueue")
-    public void stringConsumer(String message){
+    public String stringConsumer(String message){
         log.info("Received message: {}", message);
-        rabbitTemplate.convertAndSend("MAC001", "acknowledgeRoute", message);
+        return message;
     }
 
 }
