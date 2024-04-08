@@ -16,7 +16,6 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
 @Configuration
 public class RabbitMQConfig {
 
-
     @Bean
     public RabbitTemplate amqpTemplate(ConnectionFactory connectionFactory){
         return new RabbitTemplate(connectionFactory);

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -22,6 +21,7 @@ public class RabbitListenerController {
 
     @PostMapping("/add-listener")
     public ResponseEntity<Map<String, String>> addListener(@RequestBody String queueName) {
+        log.info("Received request to add the listener for the queue: {}", queueName);
 
         dynamicConfigurer.addRabbitListener(queueName, new MyMessageHandler(), "handleMessage");
 
